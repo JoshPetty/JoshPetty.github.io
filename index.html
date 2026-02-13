@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://fonts.googleapis.com/css?family=Playfair+Display:700|Inter:400,500,600' rel='stylesheet'>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      font-family: 'Inter', sans-serif;
+      color: #333;
+      min-height: 100vh;
+    }
+
+    .header {
+      padding: 80px 30px;
+      text-align: center;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+    }
+
+    .header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+      letter-spacing: -1px;
+      animation: fadeInDown 0.8s ease;
+    }
+
+    .header p {
+      font-size: 1.3rem;
+      font-weight: 300;
+      opacity: 0.95;
+      margin: 0;
+      animation: fadeInUp 0.8s ease 0.2s both;
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    nav {
+      background: rgba(255, 255, 255, 0.98);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      backdrop-filter: blur(10px);
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    nav li {
+      margin: 0;
+    }
+
+    nav li a {
+      display: block;
+      color: #333;
+      text-decoration: none;
+      padding: 18px 28px;
+      font-weight: 500;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      border-bottom: 3px solid transparent;
+      font-size: 1.05rem;
+    }
+
+    nav li a:hover {
+      color: #667eea;
+      border-bottom-color: #667eea;
+      background: rgba(102, 126, 234, 0.05);
+    }
+
+    nav li a.active {
+      color: #667eea;
+      border-bottom-color: #667eea;
+    }
+
+    .main {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .wrapper {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      height: 300px;
+      background: linear-gradient(135deg, #f0f0f0 0%, #e8e8e8 100%);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    }
+
+    .wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .card {
+      border: none;
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      background: white;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 24px 48px rgba(102, 126, 234, 0.25);
+    }
+
+    .card:hover .wrapper img {
+      transform: scale(1.08);
+    }
+
+    .card-body {
+      background: white;
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .card-body a {
+      color: #333;
+      text-decoration: none;
+      font-weight: 600;
+      text-align: center;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+      line-height: 1.4;
+    }
+
+    .card-body a:hover {
+      color: #667eea;
+    }
+
+    .row > [class*='col'] {
+      margin-bottom: 40px;
+    }
+
+    @media (max-width: 768px) {
+      .header {
+        padding: 50px 20px;
+      }
+
+      .header h1 {
+        font-size: 2.5rem;
+      }
+
+      .header p {
+        font-size: 1.1rem;
+      }
+
+      nav li a {
+        padding: 14px 16px;
+        font-size: 0.95rem;
+      }
+
+      .main {
+        padding: 50px 15px;
+      }
+
+      .wrapper {
+        height: 250px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .header h1 {
+        font-size: 2rem;
+      }
+
+      nav ul {
+        flex-direction: column;
+      }
+
+      nav li {
+        width: 100%;
+      }
+
+      nav li a {
+        border-bottom: 1px solid #eee;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  
+<title>Joshua Petty - Piano Portfolio</title>
+</head>
+<body>
+  <div class="header">
+    <h1>Joshua Petty</h1>
+    <p>Piano Performances & Music Portfolio</p>
+  </div>
+
+  <nav>
+    <ul>
+      <li><a href="Index.html" class="active">Home</a></li>
+      <li><a href="about.html">About</a></li>
+    </ul>
+  </nav>
+
+  <div class="main">
+    <div class="container-fluid">
+      <div class="row g-4">
+        <div class="col-md-6 col-lg-4">
+          <div class="card">
+            <a href="piano1.html" style="text-decoration: none;">
+              <div class="wrapper">
+                <img src="https://www.bing.com/th?id=AMMS_292f06643064ebbe95df96dc03be4471&w=124&h=168&c=7&o=6&dpr=1.5&pid=SANGAM" alt="Sonatina in C major">
+              </div>
+            </a>
+            <div class="card-body">
+              <a href="piano1.html">Sonatina In C major by Clementi & Fantasy Bossa</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="card">
+            <a href="entertainer.html" style="text-decoration: none;">
+              <div class="wrapper">
+                <img src="https://th.bing.com/th/id/OIP.p9-zh4Tij9qGiOrsZu9RsQAAAA?w=177&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7" alt="The Entertainer">
+              </div>
+            </a>
+            <div class="card-body">
+              <a href="entertainer.html">The Entertainer by Scott Joplin</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+          <div class="card">
+            <a href="boureeInFMajor.html" style="text-decoration: none;">
+              <div class="wrapper">
+                <img src="https://th.bing.com/th/id/OIP.Bpsve8PT7G8SOpZN73Az-gHaE8?w=268&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7" alt="Bouree In F major">
+              </div>
+            </a>
+            <div class="card-body">
+              <a href="boureeInFMajor.html">Bouree In F major</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</body>
+</html>
